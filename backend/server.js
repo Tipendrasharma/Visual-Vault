@@ -11,6 +11,7 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import cookieParser from 'cookie-parser';
 import dotenv from 'dotenv';
+import cors from "cors";
 
 import { connectDB } from './config/db.js';
 import apiRouter from './routes/index.js';
@@ -33,6 +34,13 @@ async function startServer() {
     console.error(err.message);
     process.exit(1);
   }
+  app.use(cors({
+  origin: [
+    "http://localhost:5173",
+    "https://visual-vault2-eight.vercel.app"
+  ],
+  credentials: true
+}));
 
   // 2. Global Parsers
   app.use(express.json({ limit: '15mb' }));
