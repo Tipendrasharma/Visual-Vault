@@ -11,10 +11,11 @@ export const validateSignup = (data = {}) => {
     errors.name = 'Full name must be at least 2 characters long.';
   }
 
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  if (!email || !emailRegex.test(email.trim())) {
-    errors.email = 'Please provide a valid email address.';
-  }
+const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+if (!email || !emailRegex.test(email.trim())) {
+  errors.email = "Please provide a valid email address.";
+}
 
   if (!password || typeof password !== 'string' || password.length < 6) {
     errors.password = 'Password must be at least 6 characters long.';
